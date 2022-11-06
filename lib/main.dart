@@ -10,7 +10,16 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   var dropDownValue = "Red";
-  List<MyColor> colors = [MyColor(colorName: "Red", color: Colors.red),MyColor(colorName: "Blue", color: Colors.blue),MyColor(colorName: "Green", color: Colors.green)];
+  List<MyColor> colors = [
+    MyColor(colorName: "Red", color: Colors.red),
+    MyColor(colorName: "Blue", color: Colors.blue),
+    MyColor(colorName: "Green", color: Colors.green),
+    MyColor(colorName: "Teal", color: Colors.teal),
+    MyColor(colorName: "Pink", color: Colors.pink),
+    MyColor(colorName: "Purple", color: Colors.purple),
+    MyColor(colorName: "Amber", color: Colors.amber),
+    MyColor(colorName: "Cyan", color: Colors.cyan),
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -24,31 +33,29 @@ class _MyAppState extends State<MyApp> {
           body: Center(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
-
-             
-
               children: [
                 DropdownButton<String>(
                     value: dropDownValue,
-
-                    items: colors.map((e) => DropdownMenuItem(
-                        value: e.colorName,
-                        child: Row(
-                          children: [
-                            Container(
-                              width: 15,
-                              height: 15,
-                              color: e.color,
+                    items: colors
+                        .map(
+                          (e) => DropdownMenuItem(
+                            value: e.colorName,
+                            child: Row(
+                              children: [
+                                Container(
+                                  width: 15,
+                                  height: 15,
+                                  color: e.color,
+                                ),
+                                const SizedBox(
+                                  width: 10,
+                                ),
+                                Text(e.colorName),
+                              ],
                             ),
-                            const SizedBox(
-                              width: 10,
-                            ),
-                            Text(e.colorName),
-                          ],
-                        ),
-                      ),).toList(),
-
-                  
+                          ),
+                        )
+                        .toList(),
                     onChanged: (value) {
                       dropDownValue = value!;
                       setState(() {});
